@@ -1,0 +1,12 @@
+<h5 class="center-align">
+  {{title}}
+</h5>
+<div class="animated fadeOut" [class.fadeOut]="ob">
+	<loading></loading>
+</div>
+
+<div class="row">
+	<div class="col s12 l3" *ngFor="let human of ob; let i = index;">
+		<human-info [info]="human" [seq]="i"></human-info>
+  </div>
+</div>
