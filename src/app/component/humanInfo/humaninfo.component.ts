@@ -3,10 +3,10 @@ import { Component ,Input} from '@angular/core';
 @Component({
   selector: 'human-info',
   template:`
-  <div class="animated bounce" [class.bounce]="animate" (mouseenter)="over()" (mouseleave)="out()">
-    <div class="card animated bounceInUp" [style.animation-delay]="getSeq()">
+  <div class="animated bounce" [class.bounce]="animate" (mouseenter)="over()" (mouseleave)="out()" [hidden]="!loadFlag">
+    <div class="card animated bounceInUp" [class.bounceInUp]="loadFlag" [style.animation-delay]="getSeq()">
       <div class="card-image">
-        <img [src]="info['pic']? info['pic']:'assets/no_image.png'">
+        <img [src]="info['pic']? info['pic']:'assets/no_image.png'" (load)="loadFlag = true">
         <span class="card-title">{{info["name"]}}</span>
         <a *ngIf="info['url']" class="btn-floating halfway-fab waves-effect waves-light blue" [href]="info['url']" target="_brank"><i class="material-icons">link</i></a>
       </div>
@@ -23,6 +23,7 @@ export class HumanInfoComponent{
   @Input() info:string[];
   @Input() seq:number;
   animate:boolean = false;
+  loadFlag:boolean = false;
 
   constructor(){
 

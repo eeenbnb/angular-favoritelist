@@ -70,6 +70,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var HumanInfoComponent = (function () {
     function HumanInfoComponent() {
         this.animate = false;
+        this.loadFlag = false;
     }
     HumanInfoComponent.prototype.over = function () {
         this.animate = true;
@@ -93,7 +94,7 @@ __decorate([
 HumanInfoComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'human-info',
-        template: "\n  <div class=\"animated bounce\" [class.bounce]=\"animate\" (mouseenter)=\"over()\" (mouseleave)=\"out()\">\n    <div class=\"card animated bounceInUp\" [style.animation-delay]=\"getSeq()\">\n      <div class=\"card-image\">\n        <img [src]=\"info['pic']? info['pic']:'assets/no_image.png'\">\n        <span class=\"card-title\">{{info[\"name\"]}}</span>\n        <a *ngIf=\"info['url']\" class=\"btn-floating halfway-fab waves-effect waves-light blue\" [href]=\"info['url']\" target=\"_brank\"><i class=\"material-icons\">link</i></a>\n      </div>\n      <div class=\"card-content\">\n        <p>{{info[\"into\"]}}</p>\n      </div>\n   </div>\n </div>\n ",
+        template: "\n  <div class=\"animated bounce\" [class.bounce]=\"animate\" (mouseenter)=\"over()\" (mouseleave)=\"out()\" [hidden]=\"!loadFlag\">\n    <div class=\"card animated bounceInUp\" [class.bounceInUp]=\"loadFlag\" [style.animation-delay]=\"getSeq()\">\n      <div class=\"card-image\">\n        <img [src]=\"info['pic']? info['pic']:'assets/no_image.png'\" (load)=\"loadFlag = true\">\n        <span class=\"card-title\">{{info[\"name\"]}}</span>\n        <a *ngIf=\"info['url']\" class=\"btn-floating halfway-fab waves-effect waves-light blue\" [href]=\"info['url']\" target=\"_brank\"><i class=\"material-icons\">link</i></a>\n      </div>\n      <div class=\"card-content\">\n        <p>{{info[\"into\"]}}</p>\n      </div>\n   </div>\n </div>\n ",
         styles: [""],
         inputs: ["info", "seq"]
     }),
